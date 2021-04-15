@@ -19,11 +19,10 @@ class CreateMessages extends Migration
             $table->date('date');
             $table->timestamps();
             $table->unsignedBigInteger('idplayer');
-            $table->foreign('idplayer', 'fk_messages_players')  // _table
+            $table->foreign('idplayer', 'fk_messages_players')
             ->on('players')
             ->references('id')
             ->onDelete('restrict');
-            
         });
     }
 
