@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateParties extends Migration
+class CreatePlayers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateParties extends Migration
      */
     public function up()
     {
-        Schema::create('parties', function (Blueprint $table) {
+        Schema::create('players', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->unsignedBigInteger('idgame');
-            $table->foreign('idgame', 'fk_parties_games')
-            ->on('games')
-            ->references('id')
-            ->onDelete('restrict');
+            $table->string('username');
+            $table->string('email');
+            $table->string('password');
+            $table->string('nickname');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateParties extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parties');
+        Schema::dropIfExists('players');
     }
 }

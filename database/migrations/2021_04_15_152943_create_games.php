@@ -18,6 +18,7 @@ class CreateGames extends Migration
             $table->string('title');
             $table->string('thumbnail_url');
             $table->string('url');
+            $table->timestamps();
         });
     }
 
