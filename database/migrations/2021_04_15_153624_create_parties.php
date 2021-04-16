@@ -21,6 +21,11 @@ class CreateParties extends Migration
             ->on('games')
             ->references('id')
             ->onDelete('restrict');
+            $table->unsignedBigInteger('idmessage');
+            $table->foreign('idmessage', 'fk_parties_messages')
+            ->on('messages')
+            ->references('id')
+            ->onDelete('restrict');
             $table->timestamps();
         });
     }

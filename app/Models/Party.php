@@ -21,4 +21,8 @@ class Party extends Model
         return $this->hasMany('App\Models\Player','idplayer','id');
     }
 
+    public function messages(){
+        return $this->hasMany('App\Models\Messages','idmessages','id');
+    }
+
 }

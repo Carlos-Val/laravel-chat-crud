@@ -12,4 +12,8 @@ class Message extends Model
     public function player(){
       return $this->belongsTo('App\Models\Player', 'idplayer', 'id');
     }
+
+    public function party(){
+      return $this->belongsTo('App\Models\Party', 'idparty', 'id');
+    }
 }
