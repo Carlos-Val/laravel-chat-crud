@@ -13,4 +13,12 @@ class Party extends Model
         return $this->belongsTo('App\Models\Game','idgame','id');
     }
 
+    public function membership(){
+        return $this->hasMany('App\Models\Membership','idmembership','id');
+    }
+
+    public function player(){
+        return $this->hasMany('App\Models\Player','idplayer','id');
+    }
+
 }
