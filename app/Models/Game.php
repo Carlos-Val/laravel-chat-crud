@@ -9,7 +9,7 @@ class Game extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','thumbnail_url','url'];
+    protected $fillable = ['title','url'];
 
     public function parties(){
         return $this->hasMany('App\Models\Party');

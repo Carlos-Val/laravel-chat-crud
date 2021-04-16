@@ -15,7 +15,7 @@ class CreateParties extends Migration
     {
         Schema::create('parties', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->unsignedBigInteger('idgame');
             $table->foreign('idgame', 'fk_parties_games')
             ->on('games')

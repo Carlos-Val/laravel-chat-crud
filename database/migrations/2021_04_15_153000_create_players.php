@@ -15,10 +15,11 @@ class CreatePlayers extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('username');
-            $table->string('email');
+            $table->string('username')->unique();
+            $table->string('email')->unique();
             $table->string('password');
-            $table->string('nickname');
+            $table->string('nickname')->unique();
+            $table->string('token')->nullable();
             $table->timestamps();
         });
     }

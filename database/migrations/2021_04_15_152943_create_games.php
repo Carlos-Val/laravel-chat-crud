@@ -15,9 +15,8 @@ class CreateGames extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->string('thumbnail_url');
-            $table->string('url');
+            $table->string('title')->unique();
+            $table->string('url')->unique();
             $table->timestamps();
         });
     }
