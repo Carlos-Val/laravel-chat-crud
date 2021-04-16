@@ -18,7 +18,6 @@ class CreatePlayers extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('nickname')->unique();
             $table->string('token')->nullable();
             $table->timestamps();
         });
