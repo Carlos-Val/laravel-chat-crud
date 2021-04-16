@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Party;
 use App\Models\Player;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
@@ -11,6 +10,41 @@ use Illuminate\Support\Facades\Hash;
 
 class PlayerController extends Controller
 {
+
+  // RF.1 REGISTER
+  public function registerPlayer(Request $request){
+
+    //nickname,nombre,password,email
+    $username = $request->input('username');
+    $email = $request->input('email');
+    $password = $request->input('password');
+    
+    //Hasheamos el password
+    $password = Hash::make($password);
+
+    try {
+
+        return Player::create([
+            'username' => $username,
+            'email' => $email,
+            'password' => $password
+        ]);
+
+    } catch (QueryException $error) {
+        
+        $eCode = $error->errorInfo[1];
+
+        if($eCode == 1062) {
+            return response()->json([
+                'error' => "Usuario ya registrado anteriormente"
+            ]);
+        }
+
+    }
+}
+
+    // RF. 2 LOGIN 
+
     public function loginPlayer(Request $request){
 
         $username = $request->input('username');
@@ -67,23 +101,7 @@ class PlayerController extends Controller
 
     }
 
-    // Funcion para desloguearse
-    public function logOut(Request $request){
-
-        $id = $request->input('id');
-
-        try {
-
-            return Player::where('id', '=', $id)
-            ->update(['token' => '']);
-
-        } catch(QueryException $error){
-            return $error;
-        }
-
-    }
-
-    //Función encargada de buscar un grupo por nombre de este
+  /* Función encargada de buscar un grupo por nombre de este
     public function buscaGrupo($name) {
         try {
 
@@ -93,42 +111,13 @@ class PlayerController extends Controller
         } catch (QueryException $error){
             return $error;
         }
-    }
+    }*/
 
+    // RF.6 Usuario tiene que poder enviar mensajes a la party
 
-    //Función encargada de registrar un nuevo usuario
-    public function registerPlayer(Request $request){
+    
 
-        //nickname,nombre,password,email
-        $username = $request->input('username');
-        $email = $request->input('email');
-        $password = $request->input('password');
-        
-        //Hasheamos el password
-        $password = Hash::make($password);
-
-        try {
-
-            return Player::create([
-                'username' => $username,
-                'email' => $email,
-                'password' => $password
-            ]);
-
-        } catch (QueryException $error) {
-            
-            $eCode = $error->errorInfo[1];
-
-            if($eCode == 1062) {
-                return response()->json([
-                    'error' => "Usuario ya registrado anteriormente"
-                ]);
-            }
-
-        }
-    }
-
-    // Funcion para modificar el nombre de usuario
+    // RF.8 Modificar datos de perfil (Falta por poder modificar password, debería de ser otra función?)
     public function modifyUsername(Request $request){
 
         $username = $request->input('username');
@@ -142,5 +131,23 @@ class PlayerController extends Controller
              return $error;
         }
     }
+
+
+    // RF.9 LOGOUT
+
+    public function logOut(Request $request){
+
+      $id = $request->input('id');
+
+      try {
+
+          return Player::where('id', '=', $id)
+          ->update(['token' => '']);
+
+      } catch(QueryException $error){
+          return $error;
+      }
+
+  }
 
 }
