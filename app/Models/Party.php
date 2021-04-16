@@ -9,6 +9,8 @@ class Party extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function game(){
         return $this->belongsTo('App\Models\Game','idgame','id');
     }

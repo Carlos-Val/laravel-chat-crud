@@ -9,6 +9,8 @@ class Player extends Model
 {
   use HasFactory;
 
+  protected $fillable = ['username','email','password','nickname'];
+
   public function messages(){
     return $this->hasMany('App\Models\Message');
   }
