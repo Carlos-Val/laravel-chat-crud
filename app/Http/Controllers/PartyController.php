@@ -11,32 +11,6 @@ class PartyController extends Controller
 {
     //
 
-    // RF.3 Usuario puede crear una party de un juego
-
-    public function createParty(Request $request){
-      $title = $request->input('title');
-      $url = $request->input('url');    // Wtf es esto
-
-      try {
-
-        return Party::create([
-            'title' => $title,
-            'url' => $url,
-        ]);
-
-    } catch (QueryException $error) {
-        
-        $eCode = $error->errorInfo[1];
-
-        if($eCode == 1062) {
-            return response()->json([
-                'error' => "La party no ha podido ser creada"
-            ]);
-        }
-
-    }
-
-  }
 
   // RF.4 Usuario tiene que poder buscar party por un determinado juego
 
