@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// postman -> http://127.0.0.1:8000/api/...
+// postman -> http://127.0.0.1:8000/api/nombreEndPoint
 
 // RF.1 Register
 Route::post('/register', [PlayerController::class, 'registerPlayer']);
@@ -50,5 +50,3 @@ Route::post('/modify/{username}', [PlayerController::class, 'modifyUsername']);
 
 // RF.9 LogOut
 Route::post('/logout', [PlayerController::class, 'logOut'])->middleware('token');
-
-
