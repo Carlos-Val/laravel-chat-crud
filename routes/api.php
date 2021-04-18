@@ -47,7 +47,7 @@ Route::group(['middleware'=> 'cors'], function () {
     Route::get('/allMessages', [PartyController::class, 'countMessages']);
 
     // RF.8 Modificar datos perfil
-    Route::post('/modify/{username}', [PlayerController::class, 'modifyUsername']);
+    Route::post('/modify', [PlayerController::class, 'modifyUsername']);
 
 
     // RF.9 LogOut

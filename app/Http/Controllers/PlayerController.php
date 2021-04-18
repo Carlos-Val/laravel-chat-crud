@@ -117,19 +117,28 @@ class PlayerController extends Controller
 
     
 
-    // RF.8 Modificar datos de perfil (Falta por poder modificar password, debería de ser otra función?)
+    // RF.8 Modificar datos de perfil 
     public function modifyUsername(Request $request){
 
+        $id = $request->input('id');
         $username = $request->input('username');
+        $password = $request->input('password');
 
         try {
                 
-            return Player::where('username', '=', $username)
-            ->update(['username' => $username]);
+            return Player::where('id', '=', $id)
+            ->update(['username' => $username]);  
+          // (((METER EN EL ARRAY DE UPDATE))) 'password' => $password] La password se modifica, pero no se Haseah
+
+          
+
+
 
         } catch(QueryException $error) {
              return $error;
         }
+
+  
     }
 
 
