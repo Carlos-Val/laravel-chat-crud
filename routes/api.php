@@ -50,5 +50,3 @@ Route::post('/modify/{username}', [PlayerController::class, 'modifyUsername']);
 
 // RF.9 LogOut
 Route::post('/logout', [PlayerController::class, 'logOut'])->middleware('token');
-
-
