@@ -51,7 +51,7 @@ Route::group(['middleware'=> 'cors'], function () {
 
 
     // RF.9 LogOut
-    Route::post('/logout', [PlayerController::class, 'logOut'])->middleware('token');
+    Route::post('/logout', [PlayerController::class, 'logOut']);
 
 
 });
