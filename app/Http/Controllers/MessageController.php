@@ -41,15 +41,18 @@ class MessageController extends Controller
 
     // RF.7 Traer todos los mensajes.
 
-    public function countMessages(){
-      return Message::all()->count();
-  }
-
     public function partyMessages($id){
 
-      return Message::where('id', 'LIKE', $id)->get();
+      try{
+        return Message::all()->where('idparty', '=', $id);
 
+      }catch(QueryException $error){
+        return $error;
+    }
   }
+
   
 }
+  
+
 
