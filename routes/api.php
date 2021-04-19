@@ -43,10 +43,10 @@ Route::group(['middleware'=> 'cors'], function () {
     Route::delete('/leaveParty', [MembershipController::class, 'leaveParty']);
 
     // RF.6 Mensajes party
-
+    Route::post('/createMessage', [MessageController::class, 'createMessage']);
 
     // RF.7 Traer mensajes party
-    Route::get('/allMessages', [PartyController::class, 'countMessages']);
+    Route::get('/allMessages', [MessageController::class, 'countMessages']);
 
     // RF.8 Modificar datos perfil
     Route::post('/modify', [PlayerController::class, 'modifyUsername']);
@@ -59,8 +59,5 @@ Route::group(['middleware'=> 'cors'], function () {
 
     // Crear Game
     Route::post('/createGame', [GameController::class, 'createGame']);
-
-    // Crear Mensaje
-    Route::post('/createMessage', [MessageController::class, 'createMessage']);
 
 });

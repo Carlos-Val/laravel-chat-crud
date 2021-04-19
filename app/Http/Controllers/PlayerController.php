@@ -99,24 +99,8 @@ class PlayerController extends Controller
         }
 
 
-    }
-
-  /* Función encargada de buscar un grupo por nombre de este
-    public function buscaGrupo($name) {
-        try {
-
-            return Party::all()->where('name', '=', $name);
-            //->makeHidden(['password'])->keyBy('id');
-       
-        } catch (QueryException $error){
-            return $error;
-        }
-    }*/
-
-    // RF.6 Usuario tiene que poder enviar mensajes a la party
-
+    }   
     
-
     // RF.8 Modificar datos de perfil 
     public function modifyUsername(Request $request){
 

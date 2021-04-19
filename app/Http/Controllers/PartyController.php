@@ -22,30 +22,6 @@ class PartyController extends Controller
       ->get();
 
   }
-
-  // RF.5 Usuario puede entrar y salir de una Party
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  // RF.7 Traer todos los mensajes.
-
-    public function countMessages(){
-      return Message::all()->count();
-  }
-
-    public function partyMessages($id){
-
-      return Message::where('id', 'LIKE', $id)->get();
-
-  }
-
   
   // Función para crear una Party
   

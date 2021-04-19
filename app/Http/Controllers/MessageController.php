@@ -10,7 +10,7 @@ class MessageController extends Controller
 {
     //
     
-    // Funcion para crear un mensaje (no funciona)
+    // RF.6 Usuario tiene que poder enviar mensajes a la party
 
     public function createMessage(Request $request){
       $message = $request->input('message');
@@ -37,6 +37,18 @@ class MessageController extends Controller
   
     }
   
+  }
+
+    // RF.7 Traer todos los mensajes.
+
+    public function countMessages(){
+      return Message::all()->count();
+  }
+
+    public function partyMessages($id){
+
+      return Message::where('id', 'LIKE', $id)->get();
+
   }
   
 }
