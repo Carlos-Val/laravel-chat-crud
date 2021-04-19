@@ -13,7 +13,9 @@ class GameController extends Controller
 
 // RF.3 Usuario puede crear una party de un juego
 
-public function createParty(Request $request){
+// Función para crear un juego
+
+public function createGame(Request $request){
     $title = $request->input('title');
     $url = $request->input('url');    // Wtf es esto
 

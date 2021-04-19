@@ -29,7 +29,7 @@ Route::group(['middleware'=> 'cors'], function () {
     Route::post('/login', [PlayerController::class, 'loginPlayer']);
 
     // RF.3 Crear party
-    Route::post('/createParty', [GameController::class, 'createParty']);
+    Route::post('/createGame', [GameController::class, 'createGame']);
 
     // RF.4 Buscar party
     Route::get('/searchParty/{gameName}', [PartyController::class, 'searchPartyGameName']);
