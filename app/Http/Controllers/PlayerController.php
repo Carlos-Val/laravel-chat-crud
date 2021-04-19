@@ -94,11 +94,8 @@ class PlayerController extends Controller
          
         } catch(QueryException $error){
             
-            return response()->$error;
-                
+            return response()->$error; 
         }
-
-
     }   
     
     // RF.8 Modificar datos de perfil 
@@ -108,23 +105,17 @@ class PlayerController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
 
+        $password = Hash::make($password);
+
         try {
                 
             return Player::where('id', '=', $id)
-            ->update(['username' => $username]);  
-          // (((METER EN EL ARRAY DE UPDATE))) 'password' => $password] La password se modifica, pero no se Haseah
-
-          
-
-
+            ->update(['username' => $username, 'password' => $password]);
 
         } catch(QueryException $error) {
              return $error;
         }
-
-  
     }
-
 
     // RF.9 LOGOUT
 
