@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\PartyController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +29,9 @@ Route::group(['middleware'=> 'cors'], function () {
     // RF.2 LogIn
     Route::post('/login', [PlayerController::class, 'loginPlayer']);
 
-    // RF.3 Crear party
-    Route::post('/createGame', [GameController::class, 'createGame']);
+    // RF:3 Crear Party por un determinado juego
+
+    Route::post('/createParty', [PartyController::class, 'createParty']);
 
     // RF.4 Buscar party
     Route::get('/searchParty/{gameName}', [PartyController::class, 'searchPartyGameName']);
@@ -53,9 +55,14 @@ Route::group(['middleware'=> 'cors'], function () {
     // RF.9 LogOut
     Route::post('/logout', [PlayerController::class, 'logOut']);
 
-    // Create Party
+    // Crear Party por un determinado juego
 
     Route::post('/createParty', [PartyController::class, 'createParty']);
 
+    // Crear Game
+    Route::post('/createGame', [GameController::class, 'createGame']);
+
+    // Crear Mensaje
+    Route::post('/createMessage', [MessageController::class, 'createMessage']);
 
 });
