@@ -80,10 +80,3 @@ class PartyController extends Controller
 }
 
 }
-
-
-
-
-
-
-
