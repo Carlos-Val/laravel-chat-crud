@@ -53,5 +53,9 @@ Route::group(['middleware'=> 'cors'], function () {
     // RF.9 LogOut
     Route::post('/logout', [PlayerController::class, 'logOut']);
 
+    // Create Party
+
+    Route::post('/createParty', [PartyController::class, 'createParty']);
+
 
 });

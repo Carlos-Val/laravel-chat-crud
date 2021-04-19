@@ -9,7 +9,7 @@ class Party extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'idgame', 'idplayer', 'idmembership', 'idmessages'];
 
     public function game(){
         return $this->belongsTo('App\Models\Game','idgame','id');
