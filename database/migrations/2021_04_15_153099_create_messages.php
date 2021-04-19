@@ -17,12 +17,17 @@ class CreateMessages extends Migration
             $table->bigIncrements('id');
             $table->string('message');
             $table->date('date');
-            $table->timestamps();
             $table->unsignedBigInteger('idplayer');
             $table->foreign('idplayer', 'fk_messages_players')
             ->on('players')
             ->references('id')
             ->onDelete('restrict');
+            $table->unsignedBigInteger('idparty');
+            $table->foreign('idparty', 'fk_messages_parties')
+            ->on('parties')
+            ->references('id')
+            ->onDelete('restrict');
+            $table->timestamps();
         });
     }
 
