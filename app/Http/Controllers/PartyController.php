@@ -16,9 +16,9 @@ class PartyController extends Controller
 
     public function searchPartyGameName($gameName){
 
-      return Party::selectRaw('party.id, game.id AS idgame, game.name')
-      ->join('games', 'games.id', '=', 'party.game_id')
-      ->where('games.name', 'LIKE', $gameName)
+      return Party::selectRaw('parties.id, games.id AS idgame, games.title')
+      ->join('games', 'games.id', '=', 'parties.id')
+      ->where('games.title', 'LIKE', $gameName)
       ->get();
 
   }
