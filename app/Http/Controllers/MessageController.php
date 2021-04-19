@@ -59,6 +59,29 @@ class MessageController extends Controller
 
     // RF. 6 '3' Borrar mensaje
 
+    public function deleteMessage(Request $request){
+
+      $idparty = $request->input('idparty');
+
+      try {
+
+          return Message::destroy([
+              'idparty' => $idparty,
+          ]);
+  
+      } catch (QueryException $error) {
+          
+          $eCode = $error->errorInfo[1];
+  
+          if($eCode == 1062) {
+              return response()->json([
+                  'error' => "No has podido borrar este mensaje"
+              ]);
+          }
+  
+      }
+  }
+
     // RF.7 Traer todos los mensajes.
 
     public function partyMessages($id){

@@ -9,7 +9,7 @@ class Message extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['message', 'idplayer', 'idparty'];
+    protected $fillable = ['message', 'idplayer', 'idparty', 'id'];
     
     public function player(){
       return $this->belongsTo('App\Models\Player', 'idplayer', 'id');
@@ -18,4 +18,5 @@ class Message extends Model
     public function party(){
       return $this->belongsTo('App\Models\Party', 'idparty', 'id');
     }
+
 }
