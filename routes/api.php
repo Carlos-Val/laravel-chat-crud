@@ -7,7 +7,7 @@ use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\PartyController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\MessageController;
-use App\Models\Membership;
+use App\Http\Controllers\MembershipController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,10 +37,10 @@ Route::group(['middleware'=> 'cors'], function () {
     Route::get('/searchParty/{gameName}', [PartyController::class, 'searchPartyGameName']);
 
     // RF.5 Entrar party
-    Route::post('/joinParty/{partyName}', [MembershipController::class, 'joinParty']);
+    Route::post('/joinParty', [MembershipController::class, 'joinParty']);
 
     // RF.5.2 Salir party
-    Route::delete('/leaveParty/{partyName}', [MembershipController::class, 'leaveParty']);
+    Route::delete('/leaveParty', [MembershipController::class, 'leaveParty']);
 
     // RF.6 Mensajes party
 
