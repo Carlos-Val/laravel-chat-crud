@@ -39,6 +39,26 @@ class MessageController extends Controller
   
   }
 
+    // RF. 6 '2' Editar mensaje
+
+    public function modifyMessage(Request $request){
+
+      $id = $request->input('id');
+      $message = $request->input('message');
+
+
+      try {
+              
+          return Message::where('id', '=', $id)
+          ->update(['message' => $message]);
+
+      } catch(QueryException $error) {
+           return $error;
+      }
+  }
+
+    // RF. 6 '3' Borrar mensaje
+
     // RF.7 Traer todos los mensajes.
 
     public function partyMessages($id){
@@ -50,6 +70,8 @@ class MessageController extends Controller
         return $error;
     }
   }
+
+
 
   
 }

@@ -45,6 +45,11 @@ Route::group(['middleware'=> 'cors'], function () {
     // RF.6 Mensajes party
     Route::post('/createMessage', [MessageController::class, 'createMessage']);
 
+    // RF.6 Modificar mensaje
+    Route::post('/modifyMessage', [MessageController::class, 'modifyMessage']);
+
+    // RF.6 Borrar mensaje
+
     // RF.7 Traer mensajes party
     Route::get('/allMessages/{id}', [MessageController::class, 'partyMessages']);
 
