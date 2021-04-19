@@ -7,6 +7,7 @@ use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\PartyController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\MessageController;
+use App\Models\Membership;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,17 +31,16 @@ Route::group(['middleware'=> 'cors'], function () {
     Route::post('/login', [PlayerController::class, 'loginPlayer']);
 
     // RF:3 Crear Party por un determinado juego
-
     Route::post('/createParty', [PartyController::class, 'createParty']);
 
     // RF.4 Buscar party
     Route::get('/searchParty/{gameName}', [PartyController::class, 'searchPartyGameName']);
 
     // RF.5 Entrar party
-
+    Route::post('/joinParty/{partyName}', [MembershipController::class, 'joinParty']);
 
     // RF.5.2 Salir party
-
+    Route::delete('/leaveParty/{partyName}', [MembershipController::class, 'leaveParty']);
 
     // RF.6 Mensajes party
 
@@ -51,12 +51,10 @@ Route::group(['middleware'=> 'cors'], function () {
     // RF.8 Modificar datos perfil
     Route::post('/modify', [PlayerController::class, 'modifyUsername']);
 
-
     // RF.9 LogOut
     Route::post('/logout', [PlayerController::class, 'logOut']);
 
     // Crear Party por un determinado juego
-
     Route::post('/createParty', [PartyController::class, 'createParty']);
 
     // Crear Game
